@@ -9,7 +9,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.cjj.my2048.MainActivity"
     android:orientation="vertical">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/bt_newGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Game"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,9 +27,10 @@
             android:layout_height="wrap_content"
             android:text="Score:" />
         <TextView
-            android:id="@+id/tv_score"
+            android:id="@+id/tv_scoreNumber"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="0"/>
     </LinearLayout>
     <com.example.cjj.my2048.GameView
         android:id="@+id/gl_gameview"
