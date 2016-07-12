@@ -42,6 +42,7 @@ public class GameView extends GridLayout {
     //初始化
     private void initGameView(){
         setColumnCount(4);//设置列数
+
         setBackgroundColor(0xffB8AF9E);//设置背景色
         Log.i(TAG,"宽度为："+getWidth()) ;
 
@@ -161,6 +162,8 @@ public class GameView extends GridLayout {
 
     //向左滑动
     private void swipLeft(){
+        boolean isAction=false;
+
         for (int y=0; y<4 ; y++){
             for (int x=0; x<4 ; x++){
                 for(int x1=x+1; x1<4; x1++){
@@ -169,12 +172,15 @@ public class GameView extends GridLayout {
                         if(cardsMap[x][y].getNum()<=0){
                             cardsMap[x][y].setNum(cardsMap[x1][y].getNum(),0);
                             cardsMap[x1][y].setNum(0,0);
-
                             x--;
+
+                            isAction=true;
                         }else if(cardsMap[x][y].equals(cardsMap[x1][y])){
                             cardsMap[x][y].setNum(cardsMap[x][y].getNum()*2,1);
                             cardsMap[x1][y].setNum(0,0);
                             MainActivity.getMainActivity().addScoreNum(cardsMap[x][y].getNum());
+
+                            isAction=true;
                         }
                         break;
 
@@ -184,12 +190,17 @@ public class GameView extends GridLayout {
             }
         }
 
-        checkGameOver();
-        addRandomCard();
+        if(isAction){
+            addRandomCard();
+            checkGameOver();
+        }
+
     }
 
     //向右滑动
     private void swipRight(){
+        boolean isAction=false;
+
         for (int y=0; y<4 ; y++){
             for (int x=3; x>=0 ; x--){
                 for(int x1=x-1; x1>=0; x1--){
@@ -200,11 +211,13 @@ public class GameView extends GridLayout {
                             cardsMap[x1][y].setNum(0,0);
 
                             x++;
+                            isAction=true;
                         }else if(cardsMap[x][y].equals(cardsMap[x1][y])){
                             cardsMap[x][y].setNum(cardsMap[x][y].getNum()*2,1);
                             cardsMap[x1][y].setNum(0,0);
                             MainActivity.getMainActivity().addScoreNum(cardsMap[x][y].getNum());
 
+                            isAction=true;
                         }
                         break;
 
@@ -214,12 +227,18 @@ public class GameView extends GridLayout {
             }
         }
 
-        checkGameOver();
-        addRandomCard();
+        if(isAction){
+            addRandomCard();
+            checkGameOver();
+        }
+
+
     }
 
     //向上滑动
     private void swipUp(){
+        boolean isAction=false;
+
         for (int x=0; x<4 ; x++){
             for (int y=0; y<4 ; y++){
                 for(int y1=y+1; y1<4; y1++){
@@ -230,11 +249,13 @@ public class GameView extends GridLayout {
                             cardsMap[x][y1].setNum(0,0);
 
                             y--;
+                            isAction=true;
                         }else if(cardsMap[x][y].equals(cardsMap[x][y1])){
                             cardsMap[x][y].setNum(cardsMap[x][y].getNum()*2,1);
                             cardsMap[x][y1].setNum(0,0);
                             MainActivity.getMainActivity().addScoreNum(cardsMap[x][y].getNum());
 
+                            isAction=true;
                         }
                         break;
 
@@ -244,12 +265,18 @@ public class GameView extends GridLayout {
             }
         }
 
-        checkGameOver();
-        addRandomCard();
+        if(isAction){
+            addRandomCard();
+            checkGameOver();
+        }
+
+
     }
 
     //向下滑动
     private void swipDown(){
+        boolean isAction=false;
+
         for (int x=0; x<4 ; x++){
             for (int y=3; y>=0 ; y--){
                 for(int y1=y-1; y1>=0; y1--){
@@ -260,11 +287,13 @@ public class GameView extends GridLayout {
                             cardsMap[x][y1].setNum(0,0);
 
                             y++;
+                            isAction=true;
                         }else if(cardsMap[x][y].equals(cardsMap[x][y1])){
                             cardsMap[x][y].setNum(cardsMap[x][y].getNum()*2,1);
                             cardsMap[x][y1].setNum(0,0);
                             MainActivity.getMainActivity().addScoreNum(cardsMap[x][y].getNum());
 
+                            isAction=true;
                         }
                         break;
 
@@ -274,8 +303,12 @@ public class GameView extends GridLayout {
             }
         }
 
-        checkGameOver();
-        addRandomCard();
+        if(isAction){
+            addRandomCard();
+            checkGameOver();
+        }
+
+
     }
 
     //检查游戏结束

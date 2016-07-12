@@ -33,7 +33,7 @@ public class Card extends FrameLayout {
 
         animation2=new ScaleAnimation(0.7f, 1.0f, 0.7f, 1.0f,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,0.5f);
-        animation2.setDuration(300);
+        animation2.setDuration(500);
     }
 
     public int getNum() {
